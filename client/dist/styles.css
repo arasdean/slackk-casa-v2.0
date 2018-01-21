@@ -84,3 +84,24 @@
 img#messageEntry {
   height:200px;
 }
+
+div#filesComponent {
+  float: left;
+  width: 2.3%;
+}
+
+div#inputComponent {
+  float: left;
+  width: 90%
+}
+
+.popover-option {
+  background: whitesmoke;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.popover-option:hover {
+  background: #4697ca;
+  color: whitesmoke; 
+}

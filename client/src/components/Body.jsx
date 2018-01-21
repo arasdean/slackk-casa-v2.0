@@ -3,12 +3,19 @@ import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import MessageList from './MessageList.jsx';
 import WorkSpaceList from './WorkSpaceList.jsx';
 import PropTypes from 'prop-types';
-
+import ProfileSlide from './ProfileSlide.jsx'
 //container for other containers
 export default class Body extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { isOpen: false};
+    this.handleProfileClick = this.handleProfileClick.bind(this);
+  }
+
+  handleProfileClick(event, value) {
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log(arguments);
+    event.preventDefault();
   }
 
   render() {
@@ -18,7 +25,7 @@ export default class Body extends React.Component {
       loadWorkSpaces,
       changeCurrentWorkSpace,
       currentWorkSpaceId,
-      currentUser
+      currentUser,
     } = this.props;
     return (
       <Container fluid>
@@ -33,9 +40,17 @@ export default class Body extends React.Component {
             />
           </Col>
           <Col className="message-list-col" xs="10">
-            <MessageList messages={messages} currentWorkSpaceId={currentWorkSpaceId} />
+            <MessageList messages={messages} currentWorkSpaceId={currentWorkSpaceId}
+            profileClick={this.handleProfileClick}
+             />
+
+          </Col>
+          <Col>
+            <ProfileSlide isOpen={this.state.isOpen} />
           </Col>
         </Row>
+
+
       </Container>
     );
   }

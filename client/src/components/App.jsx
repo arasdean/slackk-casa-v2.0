@@ -28,7 +28,9 @@ export default class App extends React.Component {
       query: '',
       currentWorkSpaceId: 0,
       currentWorkSpaceName: '',
+
     };
+
   }
 
   componentDidMount() {
@@ -126,8 +128,10 @@ export default class App extends React.Component {
           currentUser={this.props.location.state.username}
         />
         <div className="input-container">
+          <div id='filesComponent'>
           <SendFiles fileSubmit={this.handleFileSubmit.bind(this)} change={this.handleFileChange.bind(this)}/>
-
+          </div>
+          <div id='inputComponent'>
           <Input
             value={query}
             className="message-input-box"
@@ -137,6 +141,7 @@ export default class App extends React.Component {
             onChange={event => this.handleChange(event)}
             onKeyPress={event => this.handleKeyPress(event)}
           />
+        </div>
         </div>
       </div>
     );
